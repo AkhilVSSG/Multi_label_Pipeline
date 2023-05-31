@@ -53,3 +53,7 @@ Personalization according to the user:
 4. all the models like Catboost and Bert are using their primary encoding methods i.e. CountVectorizer and auto tokenizer using roberta-base you can even change those and train your model. Those can be changed in vectorizer.py in Catboost and train_Bert.py in Bert respectively
 
 
+Note: 
+1. if you are having any trouble using FastXML please refer https://github.com/Refefer/fastxml
+2. for Bert refer https://www.kaggle.com/code/debarshichanda/bert-multi-label-text-classification/notebook
+
