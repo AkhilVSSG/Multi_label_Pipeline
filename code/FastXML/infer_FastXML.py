@@ -4,7 +4,13 @@ import os
 
 
 def infer_fastxml(f_name,model):
-    '''used for the inference of the test and the val dataset with the trained FastXML model'''
+    '''
+    used for the inference of the test and the val dataset with the trained FastXML model
+    
+    input:
+        f_name (str) : stores the file name to which the model should perform inference
+        model(str) : stores the name of the model which is trained
+    '''
     
     file_="../data/FastXML/"+f_name+"_infer_"+model+".txt"
 

@@ -11,7 +11,17 @@ medicines=dict()#to store the unique medicines in a dictionary
 vect = CountVectorizer() #initilizing CountVectorizer
 
 def dev_vectorizer(model_type):
-    '''train and trainform the given symptom data into vectors using CountVectorizer'''
+    '''
+    train and trainform the given symptom data into vectors using CountVectorizer
+    input:
+        model_type(str): stores the name of the model from which the predicted data is created
+    
+    output:
+        lables(dict) : to store the unique medicines in a dictionary in the form of medicine and index as a key-value pair 
+        medicines (dict) : to store the unique medicines in a dictionary in the form of index and medicine as a key-value pair 
+
+
+    '''
 
     global lables,medicines,vect
     # print(os.getcwd())

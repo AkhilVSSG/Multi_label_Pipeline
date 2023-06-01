@@ -6,6 +6,17 @@ import pickle
 
 
 def infer_catboost(model_type,lables,medicines,iter,depth):
+        '''
+            for inference of the test and the val dataset for the trained model
+            
+            input:
+                iter (int) : it stores the number of iteration that the catboost mode had trained 
+                depth (int) : it stores the maximum depth to which a tree could grow while trianing the catboost model
+                lables(dict) : to store the unique medicines in a dictionary in the form of medicine and index as a key-value pair 
+                medicines (dict) : to store the unique medicines in a dictionary in the form of index and medicine as a key-value pair 
+                model_type(str): stores the name of the model from which the predicted data is created
+
+            '''
         
         # loading the count vectorizer which was fit with the train dataset
 

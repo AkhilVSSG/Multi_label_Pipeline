@@ -14,9 +14,25 @@ warnings.filterwarnings('ignore')
 
 
 def train_bert(model_type,med,num_lables):
+        '''
+        for training the train dataset with the mention model
+            
+        input:
+            num_lables(int) : it stores the number of unique lables present in the data
+            med (dictionary) : it stores the medicine and its respective index as value and key pair respectively
+            model_type(str): stores the name of the model from which the predicted data is created
+
+        '''
 
         def infer(loader,cat):
-            '''for inference of the test and the val dataset for the trained model'''
+            '''
+            for inference of the test and the val dataset for the trained model
+            
+            input:
+                loader(DataLoader from torch.utils) : it stores the preprocessed dataset using torch modules 
+                cat (str) : it stores the catogory to which the model must infer the data
+               
+            '''
 
             q_name=[] #to store the symptoms
 

@@ -13,7 +13,17 @@ med=dict() #to store the unique medicines in a dictionary
 model_type=''
 
 def convert_to_csv(model_type):
-    '''convert the given json data into csv with the X column and one hot encodings of the labels'''
+    '''
+    convert the given json data into csv with the X column and one hot encodings of the labels
+    
+    input:
+        model_type(str):gives us what type of model we are training
+    
+    output:
+        num_lables(int) : it stores the number of unique lables present in the data
+        med (dictionary) : it stores the medicine and its respective index as value and key pair respectively
+
+    '''
     
     global num_lables,med
 

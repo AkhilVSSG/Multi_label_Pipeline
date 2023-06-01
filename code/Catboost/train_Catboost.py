@@ -11,7 +11,17 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 def train_catboost(model_type,lables):
-        '''train the training dataset with a help of catboost classifier with one vs rest classifier'''
+        '''
+        train the training dataset with a help of catboost classifier with one vs rest classifier
+        input:
+            model_type(str): stores the name of the model from which the predicted data is created
+            lables(dict) : to store the unique medicines in a dictionary in the form of medicine and index as a key-value pair 
+        
+        output:
+            iter (int) : it stores the number of iteration that the catboost mode had trained 
+            depth (int) : it stores the maximum depth to which a tree could grow while trianing the catboost model
+
+        '''
         
         #loding the trained countVectorizer
 

@@ -10,8 +10,16 @@ import pandas as pd
 
 
 def get_act_data(f_name):
-    '''to get the actual data of the symptoms and their respective labels'''
+    '''
+    to get the actual data of the symptoms and their respective labels
+    
+    input:
+        f_name(str) : store the name of the file for which actual data is required
 
+    output:
+        checklist(list) : it stores the actual data in form of the symptom and its repective tags
+
+    '''
     with open("../data/"+f_name+".json" ,'r', encoding='utf-8') as read_file:
         f = json.loads("[" +read_file.read().replace("}\n{", "},\n{") + "]")
         checklist=[]
@@ -20,7 +28,17 @@ def get_act_data(f_name):
     return checklist
 
 def get_pra_data(f_name,model):
-    '''to get the predicted data of the symptoms and their respective labels'''
+    '''
+    to get the predicted data of the symptoms and their respective labels
+    
+    input:
+        f_name(str) : store the name of the file for which actual data is required
+        model(str): stores the name of the model from which the predicted data is created
+
+    output:
+        resp(list) : it stores the predicted data in form of the symptom and its repective tags with thier predicted probabilities
+
+    '''
 
     with open("../data/"+model+"/"+f_name+"_infer_"+model+".txt","r") as file: 
         resp=[]
@@ -30,16 +48,37 @@ def get_pra_data(f_name,model):
     return resp
 
 def model_metrics(model):
-    '''to calculate the precision @k and accuracy of the test and val datasets w.r.t different thresholds'''
-        
-    def get_precision(actual_data,predicted_data,category,model):
-            ''''to get precision@k for the respective data'''
+    '''
+    to calculate the precision @k and accuracy of the test and val datasets w.r.t different thresholds
+    
+    input:
+        model(str): stores the name of the model used in the pipeline
 
+   
+    '''    
+    def get_precision(actual_data,predicted_data,category,model):
+            ''''
+            to get precision@k for the respective data
+
+            input:
+                actual_data (list) : it stores the actual data in form of the symptom and its repective tags
+                predicted_data (list) : it stores the predicted data in form of the symptom and its repective tags with thier predicted probabilities
+                category(str) : store the name of the file for which precision is calculated
+                model (str) : stores the name of the model from which the predicted data is created
+
+            '''
             
 
             def get_freq(data):
-                '''to get frequency of the number of the labels preset in the dataset'''
-
+                '''
+                to get frequency of the number of the labels preset in the dataset
+                
+                input:
+                    data(list): stores the data to which the frequency must be calculated
+                
+                ouput:
+                    freq(dict) : stores the frequencies of the number of the labels preset in the data
+                '''
                 freq={}
                 for i in data:
                     x=len(i[1])
