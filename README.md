@@ -32,47 +32,47 @@ the directory roadmap is:
 1. First clone the repository
 
     ```sh
-     git clone https://github.com/AkhilVSSG/Multi_label_Pipeline.git
+    git clone https://github.com/AkhilVSSG/Multi_label_Pipeline.git
     ```
     then,
     ```sh
-     cd Multi_label_Pipeline/pipeline/
+    cd Multi_label_Pipeline/pipeline/
     ```
 
 2. To start this pipeline first thing is to create a conda environment and install all the dependencies in the requirement.txt
 	- Build a conda environment
         ```sh
-            conda create --name env_name
-         ```
+        conda create --name env_name
+        ```
 	- Activate the environment
         ```sh
-            conda activate env_name
+        conda activate env_name
         ```
     - Install all the dependencies in the requirements.txt
         ```sh
-             pip install -r requirements.txt (Python 2)
-             pip3 install -r requirements.txt (Python 3)
-         ```
+        pip install -r requirements.txt (Python 2)
+        pip3 install -r requirements.txt (Python 3)
+        ```
 
 3. Upload the raw data into the data directory.
 
 4. Then we must run the data_preprocess.py you can edit the py file according to the columns you require and other requirements
 	- After you have changed the data_preprocess.py file according to your requirements then run the below command
 		* First go to code directory
-                    ```
-                     cd code/
-                    ```
+		    ```
+            cd code/
+            ```
         * Make changes to the config.json file in the data directory
        
         * Then run this command to run the data_preprocess file
-                     ```
-                     python data_preprocess.py
-                    ```
+           ```
+           python data_preprocess.py
+           ```
 5. You can see you will have train.json,test.json,val.json and unique_labels.txt created
 
 6. Then we must run the pipeline file it will take data from the config file and start training
         ```
-         python piepline.py
+        python piepline.py
         ```
 7. After the execution of the py file we can see various files created that is we can see
 	- Inference files for test and val created in the respective model section in the data folder
