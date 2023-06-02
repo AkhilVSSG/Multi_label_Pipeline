@@ -16,4 +16,4 @@ def infer_fastxml(f_name,model):
 
     # in the below step we are activating the virtual environment for th FastXML execution and then running the infer command and storing the result in a txt file 
     
-    os.system(". fastxml/Fastxml/bin/activate && fxml.py ../static/models/FastXML/Fastxml.model ../data/"+f_name+".json inference --score >"+file_)   
+    os.system("fxml.py ../static/models/FastXML/Fastxml.model ../data/"+f_name+".json inference --score >"+file_)   

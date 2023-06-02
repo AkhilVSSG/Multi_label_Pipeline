@@ -2,6 +2,9 @@
 
 import json
 import pandas as pd
+import numpy as np
+from sklearn import metrics
+
 
 import torch
 torch.cuda.empty_cache()
@@ -55,12 +58,15 @@ def train_bert(model_type,med,num_lables):
                         ids = data['ids'].to(device, dtype = torch.long)
                         mask = data['mask'].to(device, dtype = torch.long)
                         token_type_ids = data['token_type_ids'].to(device, dtype = torch.long)
+                        targets = data['targets'].to(device, dtype = torch.float)
                         outputs = model(ids, mask, token_type_ids)
                         fin_outputs.extend(torch.sigmoid(outputs).cpu().detach().numpy().tolist())
                 return fin_outputs
 
 
+        
             outputs = validation()
+           
             dict_med={}
             
             # storing the infered data into a txt file with probabilities of various diagnosis
@@ -161,7 +167,6 @@ def train_bert(model_type,med,num_lables):
 
 
 
-
         train_dataset = BERTDataset(df_train, tokenizer, MAX_LEN)
         valid_dataset = BERTDataset(df_val, tokenizer, MAX_LEN)
         test_dataset = BERTDataset(df_test, tokenizer, MAX_LEN)
@@ -214,7 +219,7 @@ def train_bert(model_type,med,num_lables):
                 targets = data['targets'].to(device, dtype = torch.float)
 
                 outputs = model(ids, mask, token_type_ids)
-                
+
                 loss = loss_fn(outputs, targets)
                 if _%500 == 0:
                     print(f'Epoch: {epoch}, Loss:  {loss.item()}')
@@ -222,7 +227,6 @@ def train_bert(model_type,med,num_lables):
                 loss.backward()
                 optimizer.step()
                 optimizer.zero_grad()
-
 
 
         os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:1024"
